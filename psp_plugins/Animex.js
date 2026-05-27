@@ -9,14 +9,14 @@ Animex.Search = function (keyword, page){
 	
 	PSPTube.log("Anime Search: " + keyword + " Page: " + page + "\n");
 	
-	c=GetContents('http://psp-router.vercel.app/anime/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&v=1');
+	c=GetContents('http://upbackup67dev.duckdns.org/anime/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&v=1');
 
 	result.total     = ext("<openSearch:totalResults>") * 1;
 	result.VideoInfo = new Array();
 	
 	while(p=c.indexOf("<entry",p)+1){
 		v = {attr:2};
-		v.id            = ext("<id>http://psp-router.vercel.app/anime/id/","</id>");
+		v.id            = ext("<id>http://upbackup67dev.duckdns.org/anime/id/","</id>");
 		v.Title         = ext("<title type='text'>");
 		v.Description   = ext("content type='text'>");
 		v.ThumbnailURL  = ext("<media:thumbnail url='","'/>");
