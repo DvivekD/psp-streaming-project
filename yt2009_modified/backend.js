@@ -2241,6 +2241,10 @@ app.get("/stream_flv", (req, res) => {
     const ytdlp = child_process.spawn("yt-dlp", ytdlpArgs);
     const ffmpeg = child_process.spawn("ffmpeg", ffmpegArgs);
 
+    ytdlp.stdout.on('error', (err) => {});
+    ffmpeg.stdout.on('error', (err) => {});
+    res.on('error', (err) => {});
+
     ytdlp.stdout.pipe(ffmpeg.stdin);
     ffmpeg.stdout.pipe(res);
 
