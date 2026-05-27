@@ -11,7 +11,7 @@ bootstrap();
 
 // NOW initialize consumet. It will automatically inherit the proxy.
 const { ANIME, MOVIES } = require('@consumet/extensions');
-const gogoanime = new ANIME.Gogoanime();
+const animeScraper = new ANIME.Hianime();
 const flixhq = new MOVIES.FlixHQ();
 
 const app = express();
@@ -36,7 +36,7 @@ app.get('/search_media', async (req, res) => {
     try {
         let results;
         if (type === 'anime') {
-            results = await gogoanime.search(query);
+            results = await animeScraper.search(query);
         } else if (type === 'movie') {
             results = await flixhq.search(query);
         }
@@ -54,7 +54,7 @@ app.get('/get_stream_link', async (req, res) => {
     try {
         let streamData;
         if (type === 'anime') {
-            streamData = await gogoanime.fetchEpisodeSources(episodeId);
+            streamData = await animeScraper.fetchEpisodeSources(episodeId);
         } else {
             streamData = await flixhq.fetchEpisodeSources(episodeId, id);
         }
