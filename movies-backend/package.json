@@ -1,0 +1,15 @@
+{
+  "name": "psp-movies",
+  "version": "1.0.0",
+  "description": "PSP Movies and Anime Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@consumet/extensions": "^1.5.0",
+    "global-agent": "^3.0.0",
+    "socks-proxy-agent": "^8.0.2"
+  }
+}
