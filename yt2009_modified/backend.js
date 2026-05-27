@@ -2227,13 +2227,14 @@ app.get("/stream_flv", (req, res) => {
         "-re", // Throttle to real-time to save CPU burst credits
         "-i", "pipe:0",
         "-vcodec", "flv1",
-        "-b:v", "600k",
+        "-b:v", "900k", // Bumped from 600k for better video quality
         "-s", "480x272",
-        "-r", "24",
+        "-r", "30", // Bumped from 24fps to 30fps
         "-acodec", "libmp3lame",
         "-ar", "44100",
         "-ac", "2",
-        "-ab", "96k",
+        "-ab", "128k", // Bumped from 96k for better audio quality
+        "-af", "volume=1.5", // Boost volume by 50% for PSP speakers
         "-f", "flv",
         "pipe:1"
     ];
