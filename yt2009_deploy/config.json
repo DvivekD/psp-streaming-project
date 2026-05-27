@@ -1,0 +1,6 @@
+{
+    "port": 8081,
+    "env": "prod",
+    "ip": "20.24.21.215",
+    "auto_maintain": false
+}

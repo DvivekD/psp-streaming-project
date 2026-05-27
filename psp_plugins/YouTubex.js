@@ -29,12 +29,12 @@ YouTubex.Search	= function (keyword, page){
 	
 	if (catSpecified == false)
 	{
-		c=GetContents('http://upbackup67dev.duckdns.org/feeds/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&orderby='+sortBy+'&racy=include&v=1');
+		c=GetContents('http://20.24.21.215:8081/feeds/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&orderby='+sortBy+'&racy=include&v=1');
 		PSPTube.log("No Category\n");
 	}
 	else
 	{
-		c=GetContents('http://upbackup67dev.duckdns.org/feeds/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&orderby='+sortBy+'&racy=include&category='+category+'&v=1');
+		c=GetContents('http://20.24.21.215:8081/feeds/api/videos?q='+escape(keyword)+'&start-index='+result.start+'&max-results='+result.bypage+'&orderby='+sortBy+'&racy=include&category='+category+'&v=1');
 		PSPTube.log("Category specified\nCategory = "+category+"\n");
 	}
 
@@ -49,7 +49,7 @@ YouTubex.Search	= function (keyword, page){
 	result.VideoInfo.push(v);
 	while(p=c.indexOf("<entry",p)+1){
 		v = {attr:2};//neither IDA|npp find this string ...0=RD 1= 2=SRD 3=S
-		v.id            = ext("<id>http://upbackup67dev.duckdns.org/feeds/api/videos/","</id>");
+		v.id            = ext("<id>http://20.24.21.215:8081/feeds/api/videos/","</id>");
 		v.Title         = ext("<title type='text'>");
 		v.Description   = ext("content type='text'>")+'\nUploader:'+ext("<name>");
 		v.CommentCount  = ext("countHint='")*1;
@@ -59,7 +59,7 @@ YouTubex.Search	= function (keyword, page){
 		v.RatingCount   = ext("numRaters='")*1;
 		v.MylistCount   = ext("favoriteCount='")*1;
 		v.ViewCount     = ext("viewCount='")*1;
-		v.ThumbnailURL  = 'http://upbackup67dev.duckdns.org/vi/'+v.id+'/default.jpg';
+		v.ThumbnailURL  = 'http://20.24.21.215:8081/vi/'+v.id+'/default.jpg';
 		v.SaveFilename  = v.id+".flv";
 		v.URL	          = 'YouTubex.play("'+v.id+'")';
 		result.VideoInfo.push(v);
@@ -68,7 +68,7 @@ YouTubex.Search	= function (keyword, page){
 	return result;
 }
 YouTubex.play = function (id){
-	return "http://upbackup67dev.duckdns.org/get_video?video_id="+id;
+	return "http://20.24.21.215:8081/stream_flv?v="+id;
 }
 SiteList.push(YouTubex);
 

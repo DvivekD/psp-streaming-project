@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "psp-router",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "http://20.24.21.215:8081/$1"
+    }
+  ]
+}
